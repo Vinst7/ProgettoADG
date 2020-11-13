@@ -7,7 +7,7 @@ public class Piloti {
 	private int annoNascita;
 	private String nazionalita;
 	private int durataContratto;
-	private int stipendioAnnuo;
+	private double stipendioAnnuo;
 	private int idScuderia;
 	
 	public Piloti() {
@@ -15,7 +15,7 @@ public class Piloti {
 	}
 
 	public Piloti(int id, String nome, String cognome, int annoNascita, String nazionalita, int durataContratto,
-			int stipendioAnnuo, int idScuderia) {
+			double stipendioAnnuo, int idScuderia) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -74,11 +74,11 @@ public class Piloti {
 		this.durataContratto = durataContratto;
 	}
 
-	public int getStipendioAnnuo() {
+	public double getStipendioAnnuo() {
 		return stipendioAnnuo;
 	}
 
-	public void setStipendioAnnuo(int stipendioAnnuo) {
+	public void setStipendioAnnuo(double stipendioAnnuo) {
 		this.stipendioAnnuo = stipendioAnnuo;
 	}
 
