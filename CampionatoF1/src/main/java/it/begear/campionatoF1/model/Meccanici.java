@@ -24,7 +24,19 @@ public class Meccanici {
 		this.stipendioAnnuo = stipendioAnnuo;
 		this.idScuderia = idScuderia;
 	}
+	
 
+
+	public Meccanici(String nome, String cognome, int annoNascita, String nazionalita, int durataContratto,
+			double stipendioAnnuo, int idScuderia) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.annoNascita = annoNascita;
+		this.nazionalita = nazionalita;
+		this.durataContratto = durataContratto;
+		this.stipendioAnnuo = stipendioAnnuo;
+		this.idScuderia = idScuderia;
+	}
 
 	public int getId() {
 		return id;
@@ -108,7 +120,7 @@ public class Meccanici {
 
 	@Override
 	public String toString() {
-		return "Meccanici [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", annoNascita=" + annoNascita
+		return "Meccanici [nome=" + nome + ", cognome=" + cognome + ", annoNascita=" + annoNascita
 				+ ", nazionalita=" + nazionalita + ", durataContratto=" + durataContratto + ", stipendioAnnuo="
 				+ stipendioAnnuo + ", idScuderia=" + idScuderia + "]";
 	}

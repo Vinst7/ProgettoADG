@@ -25,6 +25,18 @@ public class Teammanager {
 		this.stipendioAnnuo = stipendioAnnuo;
 		this.idScuderia = idScuderia;
 	}
+	
+
+	public Teammanager(String nome, String cognome, int annoNascita, String nazionalita, int durataContratto,
+			double stipendioAnnuo, int idScuderia) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.annoNascita = annoNascita;
+		this.nazionalita = nazionalita;
+		this.durataContratto = durataContratto;
+		this.stipendioAnnuo = stipendioAnnuo;
+		this.idScuderia = idScuderia;
+	}
 
 	public int getId() {
 		return id;
@@ -92,7 +104,7 @@ public class Teammanager {
 
 	@Override
 	public String toString() {
-		return "Ingegneri [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", annoNascita=" + annoNascita
+		return "Teammanager [nome=" + nome + ", cognome=" + cognome + ", annoNascita=" + annoNascita
 				+ ", nazionalita=" + nazionalita + ", durataContratto=" + durataContratto + ", stipendioAnnuo="
 				+ stipendioAnnuo + ", idScuderia=" + idScuderia + "]";
 	}

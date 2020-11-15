@@ -3,6 +3,7 @@ package it.begear.campionatoF1.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import it.begear.campionatoF1.model.Ingegneri;
 import it.begear.campionatoF1.model.Meccanici;
 import it.begear.campionatoF1.model.Piloti;
@@ -10,29 +11,126 @@ import it.begear.campionatoF1.model.Scuderia;
 import it.begear.campionatoF1.utils.ScannerClass;
 
 public class TMRepository {
-	
 	private static List<Ingegneri> listaIngegneri = new ArrayList<Ingegneri>();
 	private static List<Piloti> listaPiloti = new ArrayList<Piloti>();
 	private static List<Meccanici> listaMecc = new ArrayList<Meccanici>();
-	
-	public static void lineUpPiloti(Scuderia s) {
-		System.out.println("LINE UP SCUDERIA "+s.getNome()+"\n");
-		List<Piloti> lineup = new ArrayList<Piloti>();
-		int i=0;
-		while(i<2) {
-			try {
-				int j= ScannerClass.inserisciIntero();
-				lineup.add(listaPiloti.get(j));
-				System.out.println(lineup.get(i));			
-			}catch(ArrayIndexOutOfBoundsException e) {
-				System.out.println("ERRORE INDICE INESISTENTE!");
-				lineUpPiloti(s);
-			}catch (Exception exc) {
-				exc.printStackTrace();
-			}		
-		}	
+	private static List<Piloti> lineup = new ArrayList<Piloti>();
+
+	public TMRepository() {
+		// TODO Auto-generated constructor stub
 	}
 
-	
-	
+	public static List<Ingegneri> getListaIngegneri() {
+		return listaIngegneri;
+	}
+
+	public static void setListaIngegneri(List<Ingegneri> listaIngegneri) {
+		TMRepository.listaIngegneri = listaIngegneri;
+	}
+
+	public static List<Piloti> getListaPiloti() {
+		return listaPiloti;
+	}
+
+	public static void setListaPiloti(List<Piloti> listaPiloti) {
+		TMRepository.listaPiloti = listaPiloti;
+	}
+
+	public static List<Meccanici> getListaMecc() {
+		return listaMecc;
+	}
+
+	public static void setListaMecc(List<Meccanici> listaMecc) {
+		TMRepository.listaMecc = listaMecc;
+	}
+
+	public static void ComposizioneTeam(Piloti p, Scuderia s) {
+		System.out.println("TEAM DELLA SCUDERIA: " + s.getNome() + "DEL PILOTA : " + p.getCognome() + "\n");
+		List<Ingegneri> listIngCorsa = new ArrayList<Ingegneri>();
+		List<Meccanici> listMeccCorsa = new ArrayList<Meccanici>();
+		int j = 0;
+		int z = 0;
+
+		System.out.println("INGEGNERI:");
+		while (j < 3) {
+			int random = (int) (Math.random() * 12);
+			if (s.getIdScuderia() == listaIngegneri.get(random).getIdScuderia()) {
+				if (listIngCorsa.contains(listaIngegneri.get(random))) {
+					// non aggiung;
+				} else {
+					listIngCorsa.add(listaIngegneri.get(random));
+					j++;
+				}
+			}
+		}
+		for (Ingegneri ing : listIngCorsa) {
+			System.out.println(ing);
+		}
+
+		System.out.println("MECCANICI:");
+		while (z < 5) {
+			int random = (int) (Math.random() * 20);
+			if (s.getIdScuderia() == listaMecc.get(random).getIdScuderia()) {
+				if (listMeccCorsa.contains(listaMecc.get(random))) {
+					// non aggiung;
+				} else {
+					listMeccCorsa.add(listaMecc.get(random));
+					z++;
+				}
+			}
+		}
+		for (Meccanici mecc : listMeccCorsa) {
+			System.out.println(mecc);
+		}
+
+	}
+
+	public static void lineUpPiloti(Scuderia s) {
+		System.out.println("LINE UP SCUDERIA " + s.getNome() + "\n");
+		for (int i = 0; i < 2; i++) {
+			System.out.println("Inserisci il numero del pilota");
+			try {
+				int j = ScannerClass.inserisciIntero();
+				lineup.add(listaPiloti.get(j));
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println("ERRORE INDICE INESISTENTE!");
+				lineUpPiloti(s);
+
+			} catch (Exception exc) {
+				exc.printStackTrace();
+			}
+		}
+		System.out.println(lineup);
+	}
+
+	public static void ScadenzaCont() {
+		List<Piloti> pilotiMondiale = new ArrayList<Piloti>();
+		for (int i = 0; i < listaPiloti.size(); i++) {
+			for (int k = 0; k < lineup.size(); k++) {
+				if (listaPiloti.get(i).getCognome().compareToIgnoreCase(lineup.get(k).getCognome()) == 0) {
+					Piloti p = listaPiloti.get(i);
+					pilotiMondiale.add(p);
+
+				}
+
+			}
+
+		}
+		for (Piloti piloti : pilotiMondiale) {
+			System.out.println(piloti.getNome() + " " + piloti.getCognome() + " " + piloti.getDurataContratto());
+		}
+
+	}
+
+	public static void MondTecn() {
+
+		for (Meccanici mecc : listaMecc) {
+			System.out.println(mecc);
+		}
+		
+		for (Ingegneri ing : listaIngegneri) {
+			System.out.println(ing);
+		}
+	}
+
 }

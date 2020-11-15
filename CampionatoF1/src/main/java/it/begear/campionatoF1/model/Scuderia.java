@@ -12,6 +12,11 @@ public class Scuderia {
 		this.nome = nome;
 	}
 
+	public Scuderia(String nome) {
+		super();
+		this.nome = nome;
+	}
+
 	public int getIdScuderia() {
 		return idScuderia;
 	}
