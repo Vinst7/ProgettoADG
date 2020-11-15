@@ -14,4 +14,6 @@ void createScuderia(Scuderia scuderia);
 	void deleteScuderia(int id);
 	
     List<Scuderia> readAll();
-}
+    
+    void addList();
+    }

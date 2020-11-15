@@ -15,4 +15,6 @@ void createMeccanici(Meccanici m);
 	void deleteMeccanici(int id);
 	
     List<Meccanici> readAll();
+    
+    void addList();
 }

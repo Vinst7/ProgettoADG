@@ -14,4 +14,6 @@ void createPiloti(Piloti p);
 	void deletePiloti(int id);
 	
     List<Piloti> readAll();
+    
+    void addList();
 }

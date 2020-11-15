@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.begear.campionatoF1.model.Teammanager;
+import it.begear.campionatoF1.repository.TMRepository;
 
 public class DAOTeamManagerImpl implements DAOTeamManager{
 
@@ -137,6 +138,36 @@ public class DAOTeamManagerImpl implements DAOTeamManager{
 	}
 		return list;
 	}
-	
+
+	@Override
+	public void addList() {
+		String Sql="SELECT * FROM teammanager";
+		try(PreparedStatement stm=ConnectionManager.getConnection().prepareStatement(Sql)) {
+           ResultSet result = stm.executeQuery();
+			
+			while(result.next()) {
+				Teammanager tm= new Teammanager();
+				tm.setId(result.getInt("id"));
+				tm.setNome(result.getString("nome"));
+				tm.setCognome(result.getString("cognome"));
+				tm.setAnnoNascita(result.getInt("annoNascita"));
+				tm.setNazionalita(result.getString("nazionalita"));
+				tm.setDurataContratto(result.getInt("durataContratto"));
+				tm.setStipendioAnnuo(result.getDouble("stipendioAnnuo"));
+				tm.setIdScuderia(result.getInt("idScuderia"));	
+				TMRepository.getListTm().add(tm);
+			}
+		
+		}
+			
+			catch (Exception e) {
+			e.printStackTrace();
+		}
+	   //System.out.println(TMRepository.getListTm());
 	}
+	
+		
+	}
+	
+	
 

@@ -15,4 +15,6 @@ void createTeamManager(Teammanager tm);
 	void deleteTeamManager(int id);
 	
     List<Teammanager> readAll();
+    
+    void addList();
 }

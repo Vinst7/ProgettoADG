@@ -11,5 +11,6 @@ public interface DAOIngegneri {
 	List<Ingegneri> realdAll();
 	void updateIngegnere(Ingegneri ing);
 	void deleteIngegnere(int id);
+    void addList();
 
 }

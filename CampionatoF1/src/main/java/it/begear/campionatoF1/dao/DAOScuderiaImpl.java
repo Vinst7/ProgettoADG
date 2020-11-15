@@ -6,8 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import it.begear.campionatoF1.model.Piloti;
 import it.begear.campionatoF1.model.Scuderia;
+import it.begear.campionatoF1.repository.TMRepository;
 
 public class DAOScuderiaImpl implements DAOScuderia {
 
@@ -113,6 +114,26 @@ public class DAOScuderiaImpl implements DAOScuderia {
 		e.printStackTrace();
 	}
 		return list;
+	}
+	
+	public void addList() {
+		String Sql="SELECT * FROM scuderia";
+		try(PreparedStatement stm=ConnectionManager.getConnection().prepareStatement(Sql)) {
+           ResultSet result = stm.executeQuery();
+			
+			while(result.next()) {
+				Scuderia s= new Scuderia();
+				s.setIdScuderia(result.getInt("idScuderia"));
+				s.setNome(result.getString("nome"));
+				TMRepository.getListScud().add(s);
+			}
+		
+		}
+			
+			catch (Exception e) {
+			e.printStackTrace();
+		}
+	   //System.out.println(TMRepository.getListScud());
 	}
 
 }
